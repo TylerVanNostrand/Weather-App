@@ -1,13 +1,12 @@
 // variables for data
+const inputZip = document.getElementById("zipSearch");
+const button = document.getElementById("button");
+const city = document.getElementById('city');
+const tempK = document.getElementById('tempK');
+const tempF = document.getElementById('tempF');
+const tempC = document.getElementById('tempC');
 const description = document.getElementById('description')
 const icons = document.getElementById('icons');
-// variables for api data
-var cityValue;
-var tempValue;
-var tempFValue;
-var tempCValue;
-var conditionValue;
-var zipValue;
 
 button.addEventListener('click', getWeather);
 // function for our axios call
@@ -18,18 +17,13 @@ axios.get(`https://api.openweathermap.org/data/2.5/weather?zip=${zipValue},&appi
 .then(function (response) {
     return response
     // setting varriables for api
-        cityValue = response.data.name;
-        tempValue = Math.round(response.data.main.temp);
-        tempFValue = Math.round((tempValue-273.15)*(9/5)+32);
-        tempCValue = Math.round((tempValue-273.15));
-        conditionValue = response.data.weather[0].description;
-    // input data to html
-        city.innerHTML = cityValue;
-        tempK.innerHTML = tempValue + '°' +' K'
-        tempF.innerHTML = tempFValue + '°' + ' F'
-        tempC.innerHTML = tempCValue + '°' + ' C'
-        condition.innerHTML = conditionValue;
-        icons.src = 'https://openweathermap.org/img/wn/' + data.weather[0].icon + '@2x.png';        
+        city.innerHTML = data.name;
+        tempK.innerHTML = data.main.temp + '°' +' K'
+        tempF.innerHTML = Math.round((data.main.temp - 273.15) * 9 / 5 + 32) + '°' + ' F'
+        tempC.innerHTML = Math.round(json.main.temp - 273.15) + '°' + ' C'
+        description.innerHTML = data.weather[0].description
+        icons.src = 'https://openweathermap.org/img/wn/' + data.weather[0].icon + '@2x.png';
+
   })    // a function for any errors
   .catch(function (error) {
     city.innerHTML= "Please enter valid Zip Code"
