@@ -29,7 +29,7 @@ axios.get(`https://api.openweathermap.org/data/2.5/weather?zip=${zipValue},&appi
         tempF.innerHTML = tempFValue + '°' + ' F'
         tempC.innerHTML = tempCValue + '°' + ' C'
         condition.innerHTML = conditionValue;
-            
+        icons.src = 'https://openweathermap.org/img/wn/' + data.weather[0].icon + '@2x.png';        
   })    // a function for any errors
   .catch(function (error) {
     city.innerHTML= "Please enter valid Zip Code"
