@@ -1,8 +1,20 @@
-.search {
-    min-width: 10rem;
+html, body {
+    height: 100vh;
 }
+body {
+    font-family: 'Open Sans', sans-serif;
+    background: #222;
 
-.topbar {
-    margin: 0 auto;
-    display: inline-block;
-}
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+  }
+  .card {
+    background: #606060d0;
+    color: white;
+    border-radius: 30px;  
+  }
+  .table{
+      color: white;
+  }

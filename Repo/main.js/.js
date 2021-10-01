@@ -1,20 +1,30 @@
+// variables for data
+const inputZip = document.getElementById("zipSearch");
+const button = document.getElementById("button");
+const city = document.getElementById('city');
+const tempK = document.getElementById('tempK');
+const tempF = document.getElementById('tempF');
+const tempC = document.getElementById('tempC');
+const description = document.getElementById('description')
+const icons = document.getElementById('icons');
 
-
-  // variables for data
+button.addEventListener('click', getWeather);
 
 function getWeather()   {
+    let zip = document.getElementById("zipSearch").value;
 
 axios.get(`https://api.openweathermap.org/data/2.5/weather?zip=40515,us&appid=ae408ca0fc0a06a1700b29d9d60fd061`)
   .then(function (response) {
-      document.getElementById("message").innerText = `It is now ${response.data.main.temp}°C`
-    console.log(response.data.main.temp);
+      city.innerHTML = data.name;
+            tempK.innerHTML = data.main.temp + '°' +' K'
+            tempF.innerHTML = Math.round((data.main.temp - 273.15) * 9 / 5 + 32) + '°' + ' F'
+            tempC.innerHTML = Math.round(json.main.temp - 273.15) + '°' + ' C'
+            description.innerHTML = data.weather[0].description
+            icons.src = 'https://openweathermap.org/img/wn/' + data.weather[0].icon + '@2x.png';
   })
   .catch(function (error) {
-    console.log(error);
+       document.getElementById("message").innerText = error
+    city.innerHTML= "Please enter valid Zip Code"
   })
-  .then(function () {
-    console.log("Your Forecast");
-  });
-
 }
 
